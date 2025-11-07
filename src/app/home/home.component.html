@@ -1,0 +1,51 @@
+<div class="tasks-app">
+
+
+     <aside class="sidebar">
+          <h2 class="app-title">My Lists</h2>
+          <ul class="task-lists">
+               <li class="list-item active">Personal</li>
+               <li class="list-item">Work</li>
+               <li class="list-item">Groceries</li>
+               <li class="list-item">Ideas</li>
+          </ul>
+     </aside>
+
+    
+     <main class="main-panel">
+          
+          <video autoplay loop muted playsinline class="background-video">
+               <source src="assets/bg-video.mp4" type="video/mp4" />
+          </video>
+
+          <header class="panel-header">
+               <h2>Personal Tasks</h2>
+          </header>
+
+          <div class="search bar">
+          <input type='text' [(ngModel)]="searchTasks" placeholder="Search tasks..."class="search-input"/>
+          </div>
+
+          <div class="tasks-container">
+               <ul class="tasks-list">
+                    <li class="task-item" *ngFor="let todo of todos"
+                         [ngClass]="{ completed: todo.completed === 'Completed' }">
+                         <label class="checkbox-wrapper">
+                              <input type="checkbox" [checked]="todo.completed === 'Completed'"
+                                   (change)="toggleComplete(todo)" />
+                              <span class="checkmark"></span>
+                         </label>
+                         <span class="task-text">{{ todo.task }}</span>
+                         <button class="delete-btn" (click)="deleteTask(todo.id)">✕</button>
+                    </li>
+               </ul>
+
+               <div class="no-tasks" *ngIf="todos.length === 0">
+                    <p>No tasks yet. Add one below!</p>
+               </div>
+          </div>
+
+ 
+          <button class="fab" (click)="openAddTaskModal()">＋</button>
+     </main>
+</div>

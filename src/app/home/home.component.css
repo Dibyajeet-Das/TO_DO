@@ -1,0 +1,158 @@
+:root {
+  --bg: #fafafa;
+  --sidebar-bg: #ffffff;
+  --text-color: #202124;
+  --border-color: #e0e0e0;
+  --accent: #1a73e8;
+}
+
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  background: var(--bg);
+}
+
+.tasks-app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+}
+
+.app-title {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.task-lists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.list-item:hover {
+  background: #f1f3f4;
+}
+
+.list-item.active {
+  background: #e8f0fe;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Main panel */
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.panel-header h2 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.tasks-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.tasks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.checkbox-wrapper input {
+  display: none;
+}
+
+.checkbox-wrapper .checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input:checked + .checkmark {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d93025;
+  font-size: 18px;
+}
+
+.fab {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fab:hover {
+  background: #1765d8;
+  transform: scale(1.05);
+}
+
+.no-tasks {
+  text-align: center;
+  color: #999;
+  margin-top: 2rem;
+}
